@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Board</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .board-wrapper {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .left-labels {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-right: 5px;
+            height: 22em;
+        }
+
+        .chess-board-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .chess-board {
+            display: flex;
+            flex-direction: column;
+            border: 5px solid #333;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .square,
+        .label {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.2s, border 0.2s;
+        }
+
+        .white {
+            border: 1px solid white;
+            background-color: #fff;
+        }
+
+        .black {
+            border: 1px solid black;
+
+            background-color: #000;
+            color: #fff;
+        }
+
+        .highlight {
+            border: 2px solid #58a749;
+            transform: scale(1.1);
+        }
+
+        .bottom-labels {
+            display: flex;
+            margin-top: 5px;
+        }
+
+        .label {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="board-wrapper">
+        <div class="left-labels">
+            <div class="label">8</div>
+            <div class="label">7</div>
+            <div class="label">6</div>
+            <div class="label">5</div>
+            <div class="label">4</div>
+            <div class="label">3</div>
+            <div class="label">2</div>
+            <div class="label">1</div>
+        </div>
+        <div class="chess-board-container">
+            <div class="chess-board">
+                <div class="row">
+                    <div class="square black" onclick="highlightSquare(this.id)" id="57">&#9820;</div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="58">&#9822;</div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="59">&#9821;</div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="60">&#9819;</div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="61">&#9818;</div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="62">&#9821;</div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="63">&#9822;</div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="64">&#9820;</div>
+                </div>
+                <div class="row">
+                    <div class="square white" onclick="highlightSquare(this.id)" id="49">&#9823;</div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="50">&#9823;</div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="51">&#9823;</div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="52">&#9823;</div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="53">&#9823;</div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="54">&#9823;</div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="55">&#9823;</div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="56">&#9823;</div>
+                </div>
+                <div class="row">
+                    <div class="square black" onclick="highlightSquare(this.id)" id="41"></div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="42"></div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="43"></div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="44"></div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="45"></div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="46"></div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="47"></div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="48"></div>
+                </div>
+                <div class="row">
+                    <div class="square white" onclick="highlightSquare(this.id)" id="33"></div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="34"></div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="35"></div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="36">&#9813;</div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="37"></div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="38"></div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="39"></div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="40"></div>
+                </div>
+                <div class="row">
+                    <div class="square black" onclick="highlightSquare(this.id)" id="25"></div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="26"></div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="27"></div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="28"></div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="29"></div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="30">&#9815;</div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="31"></div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="32"></div>
+                </div>
+                <div class="row">
+                    <div class="square white" onclick="highlightSquare(this.id)" id="17"></div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="18">&#9817;</div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="19"></div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="20">&#9819;</div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="21"></div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="22"></div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="23"></div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="24"></div>
+                </div>
+                <div class="row">
+                    <div class="square black" onclick="highlightSquare(this.id)" id="9">&#9817;</div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="10">&#9817;</div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="11">&#9817;</div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="12">&#9817;</div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="13">&#9817;</div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="14">&#9817;</div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="15">&#9817;</div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="16">&#9817;</div>
+                </div>
+                <div class="row">
+                    <div class="square white" onclick="highlightSquare(this.id)" id="1">&#9814;</div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="2">&#9816;</div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="3">&#9815;</div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="4">&#9813;</div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="5">&#9812;</div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="6">&#9815;</div>
+                    <div class="square white" onclick="highlightSquare(this.id)" id="7">&#9816;</div>
+                    <div class="square black" onclick="highlightSquare(this.id)" id="8">&#9814;</div>
+                </div>
+            </div>
+            <div class="bottom-labels">
+                <div class="label">a</div>
+                <div class="label">b</div>
+                <div class="label">c</div>
+                <div class="label">d</div>
+                <div class="label">e</div>
+                <div class="label">f</div>
+                <div class="label">g</div>
+                <div class="label">h</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const emptyBoxes = [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47];
+        const checkFirstMoveOfSoldier = [];
+        const checkColorOfPiece = []
+        let getClickedPiece;
+        let showMove = [];
+        let backgroundColorArray = [];
+        let val = false
+        let showFurtherMoves = [];
+        let setTargetColor = []
+        let getLockedTargetId = []
+        let targetedBackgroundColorArray = []
+        let selectedIdForMove;
+        let stopFurtherMoves = true
+        let stopLoop = true
+        let takeIdToCheckFirstSoldierMove;
+
+        function highlightSquare(id) {
+            let ids = document.getElementById(id);
+            const innerhtml = ids.innerHTML;
+            console.log(showFurtherMoves, id)
+            for (let i = 0; i < showFurtherMoves.length; i++) {
+                if (id == showFurtherMoves[i]) {
+                    const getPieceElement = document.getElementById(selectedIdForMove);
+                    const getPiece = getPieceElement.innerHTML;
+                    const idElement = document.getElementById(id);
+                    idElement.innerHTML = getPiece;
+                    getPieceElement.innerHTML = ' ';
+                    getClickedPiece = undefined;
+                    stopFurtherMoves = false
+                }
+                if (document.getElementById(takeIdToCheckFirstSoldierMove).innerHTML == '♙') {
+                    const val = {
+                        color: 'black',
+                        id: takeIdToCheckFirstSoldierMove
+                    }
+                    checkFirstMoveOfSoldier.push(val)
+                }
+            }
+            console.log(checkFirstMoveOfSoldier)
+
+            ////// SET PREVIOUS COLORS
+            for (let i = 0; i < showFurtherMoves.length; i++) {
+                let setColor = showFurtherMoves[i];
+                let setPreviousColor = backgroundColorArray[i];
+                document.getElementById(setColor).style.backgroundColor = setPreviousColor;
+            }
+            console.log('setTargetColor', setTargetColor)
+            console.log('targetedBackgroundColorArray', targetedBackgroundColorArray)
+
+
+            for (let i = 0; i < setTargetColor.length; i++) {
+                let setColor = setTargetColor[i];
+                console.log('setColor', setColor)
+                let setPreviousColor = targetedBackgroundColorArray[i];
+                console.log('setPreviousColor', setPreviousColor)
+                document.getElementById(setColor).style.backgroundColor = setPreviousColor;
+            }
+            getLockedTargetId = []
+            setTargetColor = []
+            showFurtherMoves = [];
+            showMove = [];
+            backgroundColorArray = [];
+            console.log(innerhtml)
+            // show correct moves
+            if (innerhtml == '♙' && stopFurtherMoves) {
+                console.log('entered')
+                selectedIdForMove = id
+                console.log(checkFirstMoveOfSoldier)
+                if (checkFirstMoveOfSoldier.length > 0) {
+                    for (let val of checkFirstMoveOfSoldier) {
+                        console.log(val.id,id)
+                        if (val.id != id) {
+                            console.log('first')
+                            showMove.push(Number(id) + 8);
+                            showMove.push(Number(id) + 8 + 8);
+                            getLockedTargetId.push(Number(id) + 7);
+                            getLockedTargetId.push(Number(id) + 9);
+                        } else {
+                            console.log('second')
+
+                            showMove.push(Number(id) + 8);
+                            getLockedTargetId.push(Number(id) + 7);
+
+                        }
+                    }
+                } else {
+
+                    showMove.push(Number(id) + 8);
+                    showMove.push(Number(id) + 8 + 8);
+                    getLockedTargetId.push(Number(id) + 7);
+                    getLockedTargetId.push(Number(id) + 9);
+                }
+
+
+                ////check Soldier move straight forward
+                for (value of showMove) {
+                    for (let z = 0; z < emptyBoxes.length; z++) {
+                        if (value == emptyBoxes[z] && stopLoop) {
+                            let checkInnerHtml = document.getElementById(value).innerHTML;
+                            if (checkInnerHtml == '') {
+                                showFurtherMoves.push(value);
+                            } else {
+                                stopLoop = false;
+                            }
+                            // else {
+                            //     setTargetColor.push(value);
+                            // }
+                        }
+                    }
+                }
+
+                // check soldier move left and right
+                console.log(getLockedTargetId)
+                for (value of getLockedTargetId) {
+                    for (let z = 0; z < emptyBoxes.length; z++) {
+                        if (value == emptyBoxes[z]) {
+                            let checkInnerHtml = document.getElementById(value).innerHTML;
+                            if (checkInnerHtml == '♟' || checkInnerHtml == '♜' || checkInnerHtml == '♞' || checkInnerHtml == '♝' || checkInnerHtml == '♛' || checkInnerHtml == '♚') {
+                                // showFurtherMoves.push(value);
+                                setTargetColor.push(value);
+
+                            }
+
+                        }
+                    }
+                }
+                takeIdToCheckFirstSoldierMove = id
+                console.log('showFurtherMoves', showFurtherMoves);
+                console.log('setTargetColor', setTargetColor);
+
+
+            } else if (innerhtml == '♘') {
+                for (let i = 0; i < emptyBoxes.length; i++) {
+                    if (emptyBoxes[i] == Number(id) + 10) {
+                        if (Number(id) + 10 < 17) {
+                            showFurtherMoves.push(Number(id) + 10);
+                        }
+                    } else if (emptyBoxes[i] == Number(id) + 6) {
+                        showFurtherMoves.push(Number(id) + 6);
+                    } else if (emptyBoxes[i] == Number(id) - 10) {
+                        showFurtherMoves.push(Number(id) - 10);
+                    } else if (emptyBoxes[i] == Number(id) - 6) {
+                        showFurtherMoves.push(Number(id) - 6);
+                    } else if (emptyBoxes[i] == Number(id) + 15) {
+                        showFurtherMoves.push(Number(id) + 15);
+                    } else if (emptyBoxes[i] == Number(id) + 17) {
+                        showFurtherMoves.push(Number(id) + 17);
+                    }
+                }
+            } else if (innerhtml == '♖') {
+                showFurtherMoves = getElephantData(id)
+
+            } else if (innerhtml == '♗' && stopFurtherMoves) {
+
+                showFurtherMoves = getCamelData(id)
+                console.log(showFurtherMoves)
+
+            }
+            else if (innerhtml == '♕') {
+                console.log(showMove)
+                let getcamelMoves = getCamelData(id)
+                let getElephantMoves = getElephantData(id)
+                showFurtherMoves = [...getcamelMoves, ...getElephantMoves]
+            }
+
+            console.log(showFurtherMoves)
+
+            ////// SET COLORS ON TARGET
+            for (let setColor of showFurtherMoves) {
+                let element = document.getElementById(setColor);
+                let className = element.className;
+                let backgroundColor = getComputedStyle(element).backgroundColor;
+                backgroundColorArray.push(backgroundColor);
+                element.style.backgroundColor = '#58a749';
+            }
+            for (let setColorOnTarget of setTargetColor) {
+                let element = document.getElementById(setColorOnTarget);
+                let className = element.className;
+                let backgroundColor = getComputedStyle(element).backgroundColor;
+                console.log(backgroundColor)
+                targetedBackgroundColorArray.push(backgroundColor);
+                element.style.backgroundColor = 'red';
+            }
+            console.log(targetedBackgroundColorArray)
+
+            stopFurtherMoves = true
+            getClickedPiece = id
+        }
+
+
+
+        ///////////////  GET CAMELL DATA ///////////////////////
+        function getCamelData(id) {
+            let getCamelTarget = []
+            let pushTargetIntoArray;
+            let valIncrease = 2
+            for (let a = 0; a < 9; a++) {
+                for (let i = 7; i < 65; i = i + 7) {
+                    pushTargetIntoArray = Number(id) + i;
+                    getCamelTarget.push(pushTargetIntoArray)
+                    pushTargetIntoArray = Number(id) - i;
+                    getCamelTarget.push(pushTargetIntoArray)
+                    pushTargetIntoArray = Number(id) + i + valIncrease;
+                    getCamelTarget.push(pushTargetIntoArray)
+                    pushTargetIntoArray = Number(id) - i - valIncrease;
+                    getCamelTarget.push(pushTargetIntoArray)
+                    valIncrease = valIncrease + 2
+                }
+            }
+            console.log(getCamelTarget)
+            console.log(stopLoop)
+
+
+            for (valueOfEmptyTarget of emptyBoxes) {
+                for (setCamelTarget of getCamelTarget) {
+                    console.log(valueOfEmptyTarget, setCamelTarget, stopLoop)
+
+                    if (valueOfEmptyTarget == setCamelTarget && stopLoop) {
+                        console.log('entered')
+                        showMove.push(setCamelTarget)
+                    } else {
+                        console.log('nooooooooooo')
+
+                        // stopLoop = false
+                    }
+                }
+            }
+
+            console.log(showMove)
+            if (showMove.length > 0) {
+                return showMove
+            } else {
+                return 0
+            }
+
+        }
+
+        ///////////////  GET ELEPHANT DATA ///////////////////////
+
+        function getElephantData(id) {
+            let breakAllLoops = true;
+            let selectTarget = true
+            let selectTargetForTowards = 0
+            let targetExpectedDiv = []
+            let numForIncremeant = 8
+            let a;
+            let getUpsideAndDownSideTargetDivInArray = []
+
+            for (let x = 8; x < 65; x += 8) {
+                if (selectTargetForTowards < 2) {
+                    a = numForIncremeant + Number(id)
+                    getUpsideAndDownSideTargetDivInArray.push(a)
+                    a = Number(id) - numForIncremeant
+                    getUpsideAndDownSideTargetDivInArray.push(a)
+                    for (value of getUpsideAndDownSideTargetDivInArray) {
+
+                        for (let z = 0; z < emptyBoxes.length; z++) {
+                            if (value == emptyBoxes[z]) {
+                                const checkInnerHtml = document.getElementById(value).innerHTML;
+                                if (checkInnerHtml == '' && selectTargetForTowards < 2) {
+                                    showMove.push(value);
+                                } else {
+                                    selectTargetForTowards = selectTargetForTowards + 1;
+                                }
+                            }
+                        }
+                    }
+                    numForIncremeant = numForIncremeant + 8
+                }
+
+                // target left & right side
+                if (x > Number(id) && breakAllLoops) {
+                    breakAllLoops = false;
+                    ///get right side target
+                    const rightSideTarget = x - Number(id);
+                    targetExpectedDiv.push(rightSideTarget)
+
+                    ///get left side target
+                    const leftSideTarget = (Number(id) - (x - 8) - 1)
+                    targetExpectedDiv.push(leftSideTarget)
+                    let addData;
+                    let valOFChangeTarget = targetExpectedDiv[0]
+                    for (let val of targetExpectedDiv) {
+                        for (let y = 1; y <= val; y++) {
+                            if (val == valOFChangeTarget) {
+                                addData = Number(id) + y;
+                            } else {
+                                addData = Number(id) - y;
+                            }
+                            for (let z = 0; z < emptyBoxes.length; z++) {
+                                if (addData == emptyBoxes[z]) {
+                                    const checkInnerHtml = document.getElementById(addData).innerHTML;
+                                    if (checkInnerHtml == '' && addData < x + 1 && selectTarget) {
+                                        showMove.push(addData);
+                                    } else {
+                                        selectTarget = false; // Set the flag to break all loops
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            return showMove
+        }
+    </script>
+</body>
+
+</html>
