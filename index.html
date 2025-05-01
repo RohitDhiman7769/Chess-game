@@ -213,7 +213,6 @@
         function highlightSquare(id) {
             let ids = document.getElementById(id);
             const innerhtml = ids.innerHTML;
-            console.log(showFurtherMoves, id)
             for (let i = 0; i < showFurtherMoves.length; i++) {
                 if (id == showFurtherMoves[i]) {
                     const getPieceElement = document.getElementById(selectedIdForMove);
@@ -232,18 +231,12 @@
                     checkFirstMoveOfSoldier.push(val)
                 }
             }
-            console.log(checkFirstMoveOfSoldier)
-
             ////// SET PREVIOUS COLORS
             for (let i = 0; i < showFurtherMoves.length; i++) {
                 let setColor = showFurtherMoves[i];
                 let setPreviousColor = backgroundColorArray[i];
                 document.getElementById(setColor).style.backgroundColor = setPreviousColor;
             }
-            console.log('setTargetColor', setTargetColor)
-            console.log('targetedBackgroundColorArray', targetedBackgroundColorArray)
-
-
             for (let i = 0; i < setTargetColor.length; i++) {
                 let setColor = setTargetColor[i];
                 console.log('setColor', setColor)
@@ -256,15 +249,11 @@
             showFurtherMoves = [];
             showMove = [];
             backgroundColorArray = [];
-            console.log(innerhtml)
             // show correct moves
             if (innerhtml == '♙' && stopFurtherMoves) {
-                console.log('entered')
                 selectedIdForMove = id
-                console.log(checkFirstMoveOfSoldier)
                 if (checkFirstMoveOfSoldier.length > 0) {
                     for (let val of checkFirstMoveOfSoldier) {
-                        console.log(val.id,id)
                         if (val.id != id) {
                             console.log('first')
                             showMove.push(Number(id) + 8);
@@ -272,15 +261,11 @@
                             getLockedTargetId.push(Number(id) + 7);
                             getLockedTargetId.push(Number(id) + 9);
                         } else {
-                            console.log('second')
-
                             showMove.push(Number(id) + 8);
                             getLockedTargetId.push(Number(id) + 7);
-
                         }
                     }
                 } else {
-
                     showMove.push(Number(id) + 8);
                     showMove.push(Number(id) + 8 + 8);
                     getLockedTargetId.push(Number(id) + 7);
@@ -298,21 +283,16 @@
                             } else {
                                 stopLoop = false;
                             }
-                            // else {
-                            //     setTargetColor.push(value);
-                            // }
                         }
                     }
                 }
 
                 // check soldier move left and right
-                console.log(getLockedTargetId)
                 for (value of getLockedTargetId) {
                     for (let z = 0; z < emptyBoxes.length; z++) {
                         if (value == emptyBoxes[z]) {
                             let checkInnerHtml = document.getElementById(value).innerHTML;
                             if (checkInnerHtml == '♟' || checkInnerHtml == '♜' || checkInnerHtml == '♞' || checkInnerHtml == '♝' || checkInnerHtml == '♛' || checkInnerHtml == '♚') {
-                                // showFurtherMoves.push(value);
                                 setTargetColor.push(value);
 
                             }
@@ -321,10 +301,6 @@
                     }
                 }
                 takeIdToCheckFirstSoldierMove = id
-                console.log('showFurtherMoves', showFurtherMoves);
-                console.log('setTargetColor', setTargetColor);
-
-
             } else if (innerhtml == '♘') {
                 for (let i = 0; i < emptyBoxes.length; i++) {
                     if (emptyBoxes[i] == Number(id) + 10) {
@@ -347,19 +323,13 @@
                 showFurtherMoves = getElephantData(id)
 
             } else if (innerhtml == '♗' && stopFurtherMoves) {
-
                 showFurtherMoves = getCamelData(id)
-                console.log(showFurtherMoves)
-
             }
             else if (innerhtml == '♕') {
-                console.log(showMove)
                 let getcamelMoves = getCamelData(id)
                 let getElephantMoves = getElephantData(id)
                 showFurtherMoves = [...getcamelMoves, ...getElephantMoves]
             }
-
-            console.log(showFurtherMoves)
 
             ////// SET COLORS ON TARGET
             for (let setColor of showFurtherMoves) {
@@ -373,12 +343,9 @@
                 let element = document.getElementById(setColorOnTarget);
                 let className = element.className;
                 let backgroundColor = getComputedStyle(element).backgroundColor;
-                console.log(backgroundColor)
                 targetedBackgroundColorArray.push(backgroundColor);
                 element.style.backgroundColor = 'red';
             }
-            console.log(targetedBackgroundColorArray)
-
             stopFurtherMoves = true
             getClickedPiece = id
         }
@@ -403,10 +370,6 @@
                     valIncrease = valIncrease + 2
                 }
             }
-            console.log(getCamelTarget)
-            console.log(stopLoop)
-
-
             for (valueOfEmptyTarget of emptyBoxes) {
                 for (setCamelTarget of getCamelTarget) {
                     console.log(valueOfEmptyTarget, setCamelTarget, stopLoop)
@@ -415,14 +378,9 @@
                         console.log('entered')
                         showMove.push(setCamelTarget)
                     } else {
-                        console.log('nooooooooooo')
-
-                        // stopLoop = false
                     }
                 }
             }
-
-            console.log(showMove)
             if (showMove.length > 0) {
                 return showMove
             } else {
